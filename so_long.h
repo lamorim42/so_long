@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/05 20:30:37 by lamorim           #+#    #+#             */
+/*   Updated: 2022/01/05 21:26:07 by lamorim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -5,45 +17,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include "libft/libft.h"
-
-# define BLK "\e[0;30m"
-# define RED "\e[0;31m"
-# define GRN "\e[0;32m"
-# define YEL "\e[0;33m"
-# define BLU "\e[0;34m"
-# define MAG "\e[0;35m"
-# define CYN "\e[0;36m"
-# define WHT "\e[0;37m"
-
-//Regular bold text
-# define BBLK "\e[1;30m"
-# define BRED "\e[1;31m"
-# define BGRN "\e[1;32m"
-# define BYEL "\e[1;33m"
-# define BBLU "\e[1;34m"
-# define BMAG "\e[1;35m"
-# define BCYN "\e[1;36m"
-# define BWHT "\e[1;37m"
-
-//Regular underline text
-# define UBLK "\e[4;30m"
-# define URED "\e[4;31m"
-# define UGRN "\e[4;32m"
-# define UYEL "\e[4;33m"
-# define UBLU "\e[4;34m"
-# define UMAG "\e[4;35m"
-# define UCYN "\e[4;36m"
-# define UWHT "\e[4;37m"
-
-//Regular background
-# define BLKB "\e[40m"
-# define REDB "\e[41m"
-# define GRNB "\e[42m"
-# define YELB "\e[43m"
-# define BLUB "\e[44m"
-# define MAGB "\e[45m"
-# define CYNB "\e[46m"
-# define WHTB "\e[47m"
 
 //High intensty background
 # define BLKHB "\e[0;100m"
@@ -54,16 +27,6 @@
 # define MAGHB "\e[0;105m"
 # define CYNHB "\e[0;106m"
 # define WHTHB "\e[0;107m"
-
-//High intensty text
-# define HBLK "\e[0;90m"
-# define HRED "\e[0;91m"
-# define HGRN "\e[0;92m"
-# define HYEL "\e[0;93m"
-# define HBLU "\e[0;94m"
-# define HMAG "\e[0;95m"
-# define HCYN "\e[0;96m"
-# define HWHT "\e[0;97m"
 
 //Bold high intensity text
 # define BHBLK "\e[1;90m"
@@ -76,7 +39,7 @@
 # define BHWHT "\e[1;97m"
 
 //Reset
-# define reset "\e[0m"
+# define RESET "\e[0m"
 
 # define W 0x77
 # define S 0x73
@@ -84,24 +47,28 @@
 # define D 0x64
 # define ESC 0xff1b
 
-typedef struct	s_position
-{
+typedef struct s_position {
 	int	x;
 	int	y;
-}	t_position;
+}				t_position;
 
-typedef struct	s_vars
-{
+typedef struct s_vars {
 	void		*mlx;
 	void		*win;
-}	t_vars;
+}				t_vars;
 
-typedef struct	s_data
-{
+typedef struct s_map {
+	char	*name;
+	int		rows;
+	int		columns;
+}				t_map;
 
-}	t_data;
+typedef struct s_data {
+	t_map	map;
+}				t_data;
 
 int	ft_valid_nbr_arguments(int arg_c);
 int	ft_valid_map_extension(char *arg_v);
+int	ft_map_read(int fd);
 
 #endif

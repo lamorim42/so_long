@@ -31,4 +31,10 @@ fclean: clean
 
 re: fclean all
 
+git:
+	git status
+	git add .
+	git status
+	git commit -m "map validation"
+
 .PHONY: all clean fclean re
