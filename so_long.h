@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:30:37 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/05 21:26:07 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/06 23:45:26 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,21 @@ typedef struct s_vars {
 }				t_vars;
 
 typedef struct s_map {
+	int		fd;
+	int		arg_c;
 	char	*name;
-	int		rows;
-	int		columns;
+	char	*str_map;
+	char	**mtx_map;
 }				t_map;
 
 typedef struct s_data {
 	t_map	map;
 }				t_data;
 
-int	ft_valid_nbr_arguments(int arg_c);
-int	ft_valid_map_extension(char *arg_v);
-int	ft_map_read(int fd);
+int		ft_valid_nbr_arguments(int arg_c);
+int		ft_valid_map_extension(t_data *data);
+void	ft_read_map(t_data *data);
+void	ft_mtxmap_generator(t_data *data);
+int		ft_lines_cmp(t_data data);
 
 #endif

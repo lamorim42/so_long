@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:36:17 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/05 21:27:48 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/07 00:21:16 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,24 @@ int	main(int argc, char **argv)
 	t_position	position;
 	t_data		data;
 	void		*ptr;
-	int			fd;
 
 	data.map.name = argv[1];
-	if (ft_valid_nbr_arguments(argc))
+	if (ft_valid_nbr_arguments(argc) || ft_valid_map_extension(&data))
 		exit(1);
-	if (ft_valid_map_extension(data.map.name))
+	data.map.fd = open(data.map.name, O_RDONLY);
+	ft_read_map(&data);
+	ft_mtxmap_generator(&data);
+	if (!data.map.str_map)
 		exit(1);
-	fd = open(data.map.name, O_RDONLY);
-	if (!ft_map_read(fd))
+	if (ft_lines_cmp(data))
 		exit(1);
+	/*
+	printf("%s\n", data.map.mtx_map[0]);
+	printf("%s\n", data.map.mtx_map[1]);
+	printf("%s\n", data.map.mtx_map[2]);
+	printf("%s\n", data.map.mtx_map[3]);
+	printf("%s\n", data.map.mtx_map[4]);
+	*/
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
 	ptr = mlx_xpm_file_to_image(vars.mlx, "./src/images/test.xpm", \

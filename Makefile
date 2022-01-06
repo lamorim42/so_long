@@ -8,7 +8,7 @@ MLX_FLAGS = -lmlx -lXext -lX11
 LIBFT_FLAGS = -L libft/ -lft
 SANIT = -fsanitize=address
 
-SRC = main.c $(SRC_PATH)/map_validation.c
+SRC = main.c $(SRC_PATH)/map_validation.c $(SRC_PATH)/map_validation_utils.c
 OBJ = $(SRC:%.c=%.o)
 NAME = so_long
 
@@ -35,6 +35,9 @@ git:
 	git status
 	git add .
 	git status
-	git commit -m "map validation"
+	git commit -m "map validation, matrix generator ok"
 
-.PHONY: all clean fclean re
+push:
+	git push
+
+.PHONY: all clean fclean re git push
