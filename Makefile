@@ -35,7 +35,7 @@ git:
 	git status
 	git add .
 	git status
-	git commit -m "map validation, matrix generator ok"
+	git commit -m "update"
 
 push:
 	git push
