@@ -6,32 +6,11 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 19:59:13 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/08 01:28:45 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/08 17:23:34 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-void	ft_mtxmap_generator(t_data *data)
-{
-	int	i;
-	int	flag;
-
-	i = 0;
-	flag = 0;
-	data->map.mtx_map = ft_split(data->map.str_map, '\n');
-	while (data->map.str_map[i] != '\n')
-		i++;
-	data->map.colunms = i;
-	i = 0;
-	while (data->map.str_map[i])
-	{
-		if (data->map.str_map[i] == '\n')
-			flag++;
-		i++;
-	}
-	data->map.rows = flag;
-}
 
 void	ft_lines_cmp(t_data *data)
 {
@@ -44,8 +23,7 @@ void	ft_lines_cmp(t_data *data)
 	{
 		if (ft_strlen(data->map.mtx_map[i]) != len_validation)
 		{
-			printf(BHRED "\tError 04!" RESET " Invalid map composition."\
-			" Lines don't have same amount of chars.\n");
+			printf(ERROR_4);
 			exit (1);
 		}
 		i++;

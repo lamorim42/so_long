@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:36:17 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/08 01:26:17 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/08 17:01:31 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	main(int argc, char **argv)
 	void		*ptr;
 
 	data.map.name = argv[1];
-	ft_valid_nbr_arguments(argc);
-	ft_valid_map_extension(&data);
 	data.map.fd = open(data.map.name, O_RDONLY);
+	ft_valid_nbr_arguments(argc);
 	ft_read_map(&data);
+	ft_valid_map_extension(&data);
 	ft_mtxmap_generator(&data);
 	if (!data.map.str_map)
 		exit(1);

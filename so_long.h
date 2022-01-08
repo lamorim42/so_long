@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:30:37 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/08 01:18:05 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/08 17:11:59 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,12 @@
 # define D 0x64
 # define ESC 0xff1b
 
-# define ERROR_7 "\e[1;91m\tError 07!\e[0m Invalid map composition.\
+# define ERROR_1 "\e[1;91m \tError 01! \e[0m Invalid number of argumeets.\n"
+# define ERROR_2 "\e[1;91m \tError 02! \e[0m Invalid map extension.\n"
+# define ERROR_3 "\e[1;91m \tError 03! \e[0m Null read, nonexistent map.\n"
+# define ERROR_4 "\e[1;91m \tError 04! \e[0m Invalid map composition.\
+ Map is not a rectangle.\n"
+# define ERROR_7 "\e[1;91m \tError 07! \e[0m Invalid map composition.\
  Ivalid char on the map border.\n"
 
 typedef struct s_position {
