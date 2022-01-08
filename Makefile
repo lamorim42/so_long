@@ -3,7 +3,7 @@ SRC_PATH = src/
 LIBFT_PATH = libft/
 
 CC = clang
-C_FALGS = -g -Wall -Wextra #-Werror
+C_FALGS = -g -Wall -Wextra -Werror
 MLX_FLAGS = -lmlx -lXext -lX11
 LIBFT_FLAGS = -L libft/ -lft
 SANIT = -fsanitize=address
@@ -35,7 +35,7 @@ git:
 	git status
 	git add .
 	git status
-	git commit -m "update"
+	git commit -m "Map validation ok!"
 
 push:
 	git push

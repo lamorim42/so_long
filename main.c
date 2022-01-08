@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:36:17 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/07 00:21:16 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/08 01:26:17 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,24 @@ int	main(int argc, char **argv)
 	void		*ptr;
 
 	data.map.name = argv[1];
-	if (ft_valid_nbr_arguments(argc) || ft_valid_map_extension(&data))
-		exit(1);
+	ft_valid_nbr_arguments(argc);
+	ft_valid_map_extension(&data);
 	data.map.fd = open(data.map.name, O_RDONLY);
 	ft_read_map(&data);
 	ft_mtxmap_generator(&data);
 	if (!data.map.str_map)
 		exit(1);
-	if (ft_lines_cmp(data))
-		exit(1);
+	ft_lines_cmp(&data);
+	ft_check_map_itens(&data);
+	ft_check_wrong_itens(&data);
+	ft_check_border(&data);
 	/*
 	printf("%s\n", data.map.mtx_map[0]);
 	printf("%s\n", data.map.mtx_map[1]);
 	printf("%s\n", data.map.mtx_map[2]);
 	printf("%s\n", data.map.mtx_map[3]);
 	printf("%s\n", data.map.mtx_map[4]);
+	printf("%s\n", data.map.mtx_map[5]);
 	*/
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");

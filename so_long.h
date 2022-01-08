@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:30:37 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/06 23:45:26 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/08 01:18:05 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@
 # define D 0x64
 # define ESC 0xff1b
 
+# define ERROR_7 "\e[1;91m\tError 07!\e[0m Invalid map composition.\
+ Ivalid char on the map border.\n"
+
 typedef struct s_position {
 	int	x;
 	int	y;
@@ -63,16 +66,21 @@ typedef struct s_map {
 	char	*name;
 	char	*str_map;
 	char	**mtx_map;
+	int		rows;
+	int		colunms;
 }				t_map;
 
 typedef struct s_data {
 	t_map	map;
 }				t_data;
 
-int		ft_valid_nbr_arguments(int arg_c);
+void	ft_valid_nbr_arguments(int arg_c);
 int		ft_valid_map_extension(t_data *data);
 void	ft_read_map(t_data *data);
 void	ft_mtxmap_generator(t_data *data);
-int		ft_lines_cmp(t_data data);
+void	ft_lines_cmp(t_data *data);
+void	ft_check_map_itens(t_data *data);
+void	ft_check_wrong_itens(t_data *data);
+void	ft_check_border(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:36:34 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/06 23:49:26 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/07 19:41:24 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 static void	ft_strmap_generator(t_data *data, char **line);
 
-int	ft_valid_nbr_arguments(int arg_c)
+void	ft_valid_nbr_arguments(int arg_c)
 {
 	if (arg_c != 2)
 	{
 		printf(BHRED "\tError 01!" RESET " Invalid number of argumeets.\n");
-		return (1);
+		exit (1);
 	}
-	return (0);
 }
 
 int	ft_valid_map_extension(t_data *data)
@@ -38,6 +37,7 @@ int	ft_valid_map_extension(t_data *data)
 			return (0);
 	}
 	printf(BHRED "\tError 02!" RESET " Invalid map format.\n");
+	exit(1);
 	return (1);
 }
 
