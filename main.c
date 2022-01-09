@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:36:17 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/08 17:01:31 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/09 05:25:16 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,6 @@ int	main(int argc, char **argv)
 	ft_check_map_itens(&data);
 	ft_check_wrong_itens(&data);
 	ft_check_border(&data);
-	/*
-	printf("%s\n", data.map.mtx_map[0]);
-	printf("%s\n", data.map.mtx_map[1]);
-	printf("%s\n", data.map.mtx_map[2]);
-	printf("%s\n", data.map.mtx_map[3]);
-	printf("%s\n", data.map.mtx_map[4]);
-	printf("%s\n", data.map.mtx_map[5]);
-	*/
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
 	ptr = mlx_xpm_file_to_image(vars.mlx, "./src/images/test.xpm", \

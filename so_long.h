@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:30:37 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/08 17:11:59 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/09 03:09:08 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@
 # define ERROR_3 "\e[1;91m \tError 03! \e[0m Null read, nonexistent map.\n"
 # define ERROR_4 "\e[1;91m \tError 04! \e[0m Invalid map composition.\
  Map is not a rectangle.\n"
+# define ERROR_5 "\e[1;91m \tError 04! \e[0m Invalid map composition.\
+ Missing mandatory item.\n"
+# define ERROR_6 "\e[1;91m \tError 04! \e[0m Invalid map composition.\
+ Ivalid char on the map.\n"
 # define ERROR_7 "\e[1;91m \tError 07! \e[0m Invalid map composition.\
  Ivalid char on the map border.\n"
 
