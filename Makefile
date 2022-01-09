@@ -9,7 +9,7 @@ LIBFT_FLAGS = -L libft/ -lft
 SANIT = -fsanitize=address
 
 SRC = main.c $(SRC_PATH)/map_validation.c $(SRC_PATH)/map_validation_utils.c \
-	$(SRC_PATH)/read_map.c
+	$(SRC_PATH)/read_map.c $(SRC_PATH)/map_generator.c
 OBJ = $(SRC:%.c=%.o)
 NAME = so_long
 
@@ -36,7 +36,7 @@ git:
 	git status
 	git add .
 	git status
-	git commit -m "create read_map.c"
+	git commit -m "Map generation ok, window size ok!"
 
 push:
 	git push

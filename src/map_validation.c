@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:36:34 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/09 03:11:32 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/09 09:27:59 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	ft_valid_nbr_arguments(int arg_c)
 	}
 }
 
-int	ft_valid_map_extension(t_data *data)
+int	ft_valid_map_extension(t_game *game)
 {
 	char	*str;
 	int		len;
 
 	len = 0;
-	str = ft_strrchr(data->map.name, '.');
+	str = ft_strrchr(game->data.map.name, '.');
 	if (str)
 	{
 		len = ft_strlen(str);
@@ -39,16 +39,16 @@ int	ft_valid_map_extension(t_data *data)
 	return (1);
 }
 
-void	ft_lines_cmp(t_data *data)
+void	ft_lines_cmp(t_game *game)
 {
 	int	i;
 	int	len_validation;
 
 	i = 1;
-	len_validation = ft_strlen(data->map.mtx_map[0]);
-	while (data->map.mtx_map[i])
+	len_validation = ft_strlen(game->data.map.mtx[0]);
+	while (game->data.map.mtx[i])
 	{
-		if (ft_strlen(data->map.mtx_map[i]) != len_validation)
+		if (ft_strlen(game->data.map.mtx[i]) != len_validation)
 		{
 			printf(ERROR_4);
 			exit (1);
@@ -57,30 +57,30 @@ void	ft_lines_cmp(t_data *data)
 	}
 }
 
-void	ft_check_map_itens(t_data *data)
+void	ft_check_map_itens(t_game *game)
 {
-	if (!ft_strrchr(data->map.str_map, 'C') \
-	|| !ft_strrchr(data->map.str_map, 'E') \
-	|| !ft_strrchr(data->map.str_map, 'P'))
+	if (!ft_strrchr(game->data.map.str, 'C') \
+	|| !ft_strrchr(game->data.map.str, 'E') \
+	|| !ft_strrchr(game->data.map.str, 'P'))
 	{
 		printf(ERROR_5);
 		exit(1);
 	}
 }
 
-void	ft_check_wrong_itens(t_data *data)
+void	ft_check_wrong_itens(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while (data->map.str_map[i])
+	while (game->data.map.str[i])
 	{
-		if (data->map.str_map[i] == '0' \
-		|| data->map.str_map[i] == '1' \
-		|| data->map.str_map[i] == 'P' \
-		|| data->map.str_map[i] == 'C' \
-		|| data->map.str_map[i] == 'E' \
-		|| data->map.str_map[i] == '\n')
+		if (game->data.map.str[i] == '0' \
+		|| game->data.map.str[i] == '1' \
+		|| game->data.map.str[i] == 'P' \
+		|| game->data.map.str[i] == 'C' \
+		|| game->data.map.str[i] == 'E' \
+		|| game->data.map.str[i] == '\n')
 			i++;
 		else
 		{

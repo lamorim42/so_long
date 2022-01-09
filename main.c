@@ -6,54 +6,55 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:36:17 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/09 05:25:16 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/09 10:57:10 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_destroy_window(t_vars *vars)
+int	ft_destroy_window(t_game *game)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_window(game->mlx, game->win);
 	exit(0);
 	return (0);
 }
 
-int	ft_close_esc(int keycode, t_vars *vars)
+int	ft_close_esc(int keycode, t_game *game)
 {
 	if (keycode == ESC)
-		ft_destroy_window(vars);
+		ft_destroy_window(game);
 	return (0);
 }
 
 int	main(int argc, char **argv)
 {
-	t_vars		vars;
+	t_game		game;
 	t_position	position;
-	t_data		data;
 	void		*ptr;
 
-	data.map.name = argv[1];
-	data.map.fd = open(data.map.name, O_RDONLY);
+	// map validation
+	game.data.map.name = argv[1];
+	game.data.map.fd = open(game.data.map.name, O_RDONLY);
 	ft_valid_nbr_arguments(argc);
-	ft_read_map(&data);
-	ft_valid_map_extension(&data);
-	ft_mtxmap_generator(&data);
-	if (!data.map.str_map)
+	ft_read_map(&game);
+	ft_valid_map_extension(&game);
+	ft_mtxmap_generator(&game);
+	if (!game.data.map.str)
 		exit(1);
-	ft_lines_cmp(&data);
-	ft_check_map_itens(&data);
-	ft_check_wrong_itens(&data);
-	ft_check_border(&data);
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
-	ptr = mlx_xpm_file_to_image(vars.mlx, "./src/images/test.xpm", \
-	&position.x, &position.y);
-	position.x = 300;
-	position.y = 300;
-	mlx_put_image_to_window(vars.mlx, vars.win, ptr, position.x, position.y);
-	mlx_hook(vars.win, 2, 1L << 0, ft_close_esc, &vars);
-	mlx_hook(vars.win, 17, 0L, ft_destroy_window, &vars);
-	mlx_loop(vars.mlx);
+	ft_lines_cmp(&game);
+	ft_check_map_itens(&game);
+	ft_check_wrong_itens(&game);
+	ft_check_border(&game);
+	// map generator
+	ft_window_size(&game);
+	game.mlx = mlx_init();
+	game.win = mlx_new_window(game.mlx, \
+	(game.win_width), (game.win_height), "Hello world!");
+	printf("(%d, %d)\n", (game.data.map.colunms * SPRITE_SIZE), ((game.data.map.rows + 1) * SPRITE_SIZE));
+	ft_all_img_init(&game);
+	ft_map_drow(&game);
+	mlx_hook(game.win, 2, 1L << 0, ft_close_esc, &game);
+	mlx_hook(game.win, 17, 0L, ft_destroy_window, &game);
+	mlx_loop(game.mlx);
 	return (0);
 }
