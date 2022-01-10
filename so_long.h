@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:30:37 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/09 10:55:18 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/10 00:51:51 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,13 @@ typedef struct s_game {
 	t_data		data;
 	int			win_width;
 	int			win_height;
+	int			colletable;
+	t_position	door;
+	int			end_game;
 }				t_game;
 
+int		ft_destroy_window(t_game *game);
+int		ft_close_esc(int keycode, t_game *game);
 void	ft_valid_nbr_arguments(int arg_c);
 int		ft_valid_map_extension(t_game *game);
 void	ft_read_map(t_game *game);
@@ -91,7 +96,20 @@ void	ft_check_map_itens(t_game *game);
 void	ft_check_wrong_itens(t_game *game);
 void	ft_check_border(t_game *game);
 void	ft_window_size(t_game *game);
+void	*ft_img_init(char *path_img, t_game *game);
 void	ft_all_img_init(t_game *game);
+void	ft_put_image(t_game *game, void *img, int x, int y);
 void	ft_map_drow(t_game *game);
+void	ft_init_player(t_game *game, int j, int i);
+int		ft_move_player(int key, t_game *game);
+void	ft_move_w(t_game *game);
+void	ft_move_s(t_game *game);
+void	ft_move_a(t_game *game);
+void	ft_move_d(t_game *game);
+void	ft_collet_count(t_game *game);
+void	ft_find_door(t_game *game);
+void	ft_open_door(t_game *game);
+void	ft_game_init(t_game *game);
+//void	ft_open_door(t_game *game);
 
 #endif

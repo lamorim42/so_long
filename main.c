@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:36:17 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/09 10:57:10 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/10 00:02:07 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int	ft_close_esc(int keycode, t_game *game)
 int	main(int argc, char **argv)
 {
 	t_game		game;
-	t_position	position;
-	void		*ptr;
 
 	// map validation
 	game.data.map.name = argv[1];
@@ -49,12 +47,14 @@ int	main(int argc, char **argv)
 	ft_window_size(&game);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, \
-	(game.win_width), (game.win_height), "Hello world!");
-	printf("(%d, %d)\n", (game.data.map.colunms * SPRITE_SIZE), ((game.data.map.rows + 1) * SPRITE_SIZE));
+	(game.win_width), (game.win_height), "Vacina sim!");
 	ft_all_img_init(&game);
 	ft_map_drow(&game);
-	mlx_hook(game.win, 2, 1L << 0, ft_close_esc, &game);
+	// game init
+	ft_game_init(&game);
+	//mlx_hook(game.win, 2, 1L << 0, ft_close_esc, &game);
 	mlx_hook(game.win, 17, 0L, ft_destroy_window, &game);
+	mlx_hook(game.win, 2, 1L << 0, ft_move_player, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }

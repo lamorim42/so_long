@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:36:34 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/09 09:27:59 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/09 20:37:14 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	ft_valid_map_extension(t_game *game)
 
 void	ft_lines_cmp(t_game *game)
 {
-	int	i;
-	int	len_validation;
+	int		i;
+	size_t	len_validation;
 
 	i = 1;
 	len_validation = ft_strlen(game->data.map.mtx[0]);

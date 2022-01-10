@@ -6,13 +6,13 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 09:08:47 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/09 11:06:46 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/10 00:51:31 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void	*ft_img_init(char *path_img, t_game *game)
+void	*ft_img_init(char *path_img, t_game *game)
 {
 	void	*img_ptr;
 
@@ -36,10 +36,10 @@ void	ft_all_img_init(t_game *game)
 	game->data.player.img = ft_img_init(PLAYER, game);
 }
 
-static void	ft_put_image(t_game *game, void *img, int j, int i)
+void	ft_put_image(t_game *game, void *img, int x, int y)
 {
-	mlx_put_image_to_window(game->mlx, game->win, img, j * SPRITE_SIZE, \
-	i * SPRITE_SIZE);
+	mlx_put_image_to_window(game->mlx, game->win, img, x * SPRITE_SIZE, \
+	y * SPRITE_SIZE);
 }
 
 void	ft_map_drow(t_game *game)
@@ -62,7 +62,7 @@ void	ft_map_drow(t_game *game)
 			else if (game->data.map.mtx[i][j] == 'E')
 				ft_put_image(game, game->data.map.door_img, j, i);
 			else if (game->data.map.mtx[i][j] == 'P')
-				ft_put_image(game, game->data.player.img, j, i);
+				ft_init_player(game, j, i);
 			j++;
 		}
 		i++;
