@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:30:37 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/10 00:51:51 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/11 05:45:41 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define ERROR_7 "\e[1;91m \tError 07! \e[0m Invalid map composition.\
  Ivalid char on the map border.\n"
 
-# define SPRITE_SIZE 32
+# define SPRITE_SIZE 64
 
 # define FLOOR "./src/images/floor.xpm"
 # define WALL "./src/images/wall_2.xpm"

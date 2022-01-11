@@ -44,7 +44,7 @@ git:
 	git status
 	git add .
 	git status
-	git commit -m "update"
+	git commit -m "update imgs"
 
 push:
 	git push
