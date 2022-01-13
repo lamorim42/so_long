@@ -6,13 +6,26 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 19:59:13 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/13 11:38:32 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/13 15:46:51 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
 static void	ft_free_print(t_game *game);
+
+void	ft_map_validation(t_game *game)
+{
+	ft_valid_map_extension(game);
+	ft_read_map(game);
+	ft_mtxmap_generator(game);
+	if (!game->data.map.str)
+		exit(1);
+	ft_lines_cmp(game);
+	ft_check_map_itens(game);
+	ft_check_wrong_itens(game);
+	ft_check_border(game);
+}
 
 void	ft_check_border(t_game *game)
 {

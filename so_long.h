@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:30:37 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/13 11:14:20 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/13 15:48:49 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,20 @@
 # define D 0x64
 # define ESC 0xff1b
 
-# define ERROR_1 "\e[1;91m \tError 01! \e[0m Invalid number of argumeets.\n"
-# define ERROR_2 "\e[1;91m \tError 02! \e[0m Invalid map extension.\n"
-# define ERROR_3 "\e[1;91m \tError 03! \e[0m Null read, nonexistent %s map.\n"
-# define ERROR_4 "\e[1;91m \tError 04! \e[0m Invalid map composition.\
- Map is not a rectangle.\n"
-# define ERROR_5 "\e[1;91m \tError 05! \e[0m Invalid map composition.\
- Missing mandatory item.\n"
-# define ERROR_6 "\e[1;91m \tError 06! \e[0m Invalid map composition.\
- Ivalid char on the map.\n"
-# define ERROR_7 "\e[1;91m \tError 07! \e[0m Invalid map composition.\
- Ivalid char on the map border.\n"
+# define ERROR_1 "\e[1;91m Error\n \tiderror = 01: \e[0m Invalid number of\
+ argumeets.\n"
+# define ERROR_2 "\e[1;91m Error\n \tiderror = 02: \e[0m \
+Invalid map extension.\n"
+# define ERROR_3 "\e[1;91m Error\n \tiderror = 03: \e[0m Null read, \
+nonexistent %s map.\n"
+# define ERROR_4 "\e[1;91m Error\n \tiderror = 04: \e[0m Invalid map \
+composition. Map is not a rectangle.\n"
+# define ERROR_5 "\e[1;91m Error\n \tiderror = 05: \e[0m Invalid map \
+composition. Missing mandatory item.\n"
+# define ERROR_6 "\e[1;91m Error\n \tiderror = 06: \e[0m Invalid map \
+composition. Ivalid char on the map.\n"
+# define ERROR_7 "\e[1;91m Error\n \tiderror = 07: \e[0m Invalid map \
+composition. Ivalid char on the map border.\n"
 
 # define SPRITE_SIZE 64
 
@@ -88,6 +91,7 @@ typedef struct s_game {
 
 int		ft_destroy_window(t_game *game);
 int		ft_close_esc(int keycode, t_game *game);
+void	ft_map_validation(t_game *game);
 void	ft_valid_nbr_arguments(int arg_c);
 int		ft_valid_map_extension(t_game *game);
 void	ft_read_map(t_game *game);

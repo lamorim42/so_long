@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 09:08:47 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/12 21:24:15 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/13 16:43:29 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,28 +69,4 @@ void	ft_map_drow(t_game *game)
 		}
 		i++;
 	}
-}
-
-void	ft_put_door(t_game *game, int i, int j, int *flag)
-{
-	if (!*flag)
-	{
-		ft_put_image(game, game->data.map.door_img, j, i);
-		game->door.x = j;
-		game->door.y = i;
-		(*flag)++;
-	}
-	else
-		ft_put_image(game, game->data.map.floor_img, j, i);
-}
-
-void	ft_put_player(t_game *game, int i, int j, int *flag)
-{
-	if (!*flag)
-	{
-		ft_init_player(game, j, i);
-		(*flag)++;
-	}
-	else
-		ft_put_image(game, game->data.map.floor_img, j, i);
 }

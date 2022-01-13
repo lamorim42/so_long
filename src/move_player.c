@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 23:11:09 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/13 11:08:26 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/13 14:57:56 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,15 @@ int	ft_move_player(int key, t_game *game)
 		ft_move(game, ft_move_d, i, j);
 	else if (key == ESC)
 		ft_destroy_window(game);
-	printf("%d\n", game->steps);
+	if (!game->end_game)
+		printf("%d\n", game->steps);
 	return (0);
 }
 
 void	ft_move_w(t_game *game, int *i, int *j)
 {
+	if (game->end_game == 1)
+		return ;
 	if (game->data.map.mtx[*j - 1][*i] == 'C')
 		game->colletable -= 1;
 	if (game->data.map.mtx[*j - 1][*i] == 'E' \
@@ -56,6 +59,8 @@ void	ft_move_w(t_game *game, int *i, int *j)
 
 void	ft_move_s(t_game *game, int *i, int *j)
 {
+	if (game->end_game == 1)
+		return ;
 	if (game->data.map.mtx[*j + 1][*i] == 'C')
 		game->colletable -= 1;
 	if (game->data.map.mtx[*j + 1][*i] == 'E' \
@@ -77,6 +82,8 @@ void	ft_move_s(t_game *game, int *i, int *j)
 
 void	ft_move_a(t_game *game, int *i, int *j)
 {
+	if (game->end_game == 1)
+		return ;
 	if (game->data.map.mtx[*j][*i - 1] == 'C')
 		game->colletable -= 1;
 	if (game->data.map.mtx[*j][*i - 1] == 'E' \
@@ -98,6 +105,8 @@ void	ft_move_a(t_game *game, int *i, int *j)
 
 void	ft_move_d(t_game *game, int *i, int *j)
 {
+	if (game->end_game == 1)
+		return ;
 	if (game->data.map.mtx[*j][*i + 1] == 'C')
 		game->colletable -= 1;
 	if (game->data.map.mtx[*j][*i + 1] == 'E' \
