@@ -1,0 +1,6 @@
+a.out
+libft.pdf
+*.swp
+.vscode/
+libftTester
+test_base.c

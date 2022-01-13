@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 00:16:31 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/12 21:16:15 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/13 11:40:04 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,18 @@ void	ft_end_game(t_game *game)
 {
 	free(game->data.map.mtx);
 	exit(1);
+}
+
+void	ft_free_game(t_game *game)
+{
+	int	i;
+
+	i = game->data.map.rows;
+	while (i >= 0)
+	{
+		free(game->data.map.mtx[i]);
+		i--;
+	}
+	free(game->data.map.mtx);
+	free(game->data.map.str);
 }

@@ -6,17 +6,17 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:30:37 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/13 01:14:30 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/13 11:14:20 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include "libft/libft.h"
+# include "libraries/minilibx-linux/mlx.h"
+# include "libraries/libft/libft.h"
 
 # define W 0x77
 # define S 0x73
@@ -115,5 +115,6 @@ void	ft_collet_count(t_game *game);
 void	ft_open_door(t_game *game);
 void	ft_game_init(t_game *game);
 void	ft_end_game(t_game *game);
+void	ft_free_game(t_game *game);
 
 #endif

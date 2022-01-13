@@ -1,11 +1,12 @@
 
 SRC_PATH = src/
-LIBFT_PATH = libft/
+LIBFT_PATH = libraries/libft/
+MLX_PATH = libraries/minilibx-linux
 
 CC = clang
 CFLAGS = -g3 -Wall -Wextra -Werror
-MLX_FLAGS = -lmlx -lXext -lX11
-LIBFT_FLAGS = -L libft/ -lft
+MLXFLAGS = -L $(MLX_PATH) -lmlx -lXext -lX11
+LIBFTFLAGS = -L $(LIBFT_PATH) -lft
 SANIT = -fsanitize=address
 
 SRC = main.c \
@@ -29,11 +30,13 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make all -C $(LIBFT_PATH)
-	$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) $(LIBFT_FLAGS) -o $(NAME)
+	make all -C $(MLX_PATH)
+	$(CC) $(CFLAGS) $(OBJ) $(MLXFLAGS) $(LIBFTFLAGS) -o $(NAME)
 
 clean:
 	rm -rf $(OBJ)
 	make clean -C $(LIBFT_PATH)
+	make clean -C $(MLX_PATH)
 
 fclean: clean
 	rm -rf $(NAME)
@@ -53,6 +56,6 @@ push:
 test:
 	make re
 	clear
-	valgrind --leak-check=full --show-leak-kinds=all ./so_long maps/wrog_maps/map_i.ber
+	valgrind --leak-check=full --show-leak-kinds=all ./so_long maps/map_1.ber
 
 .PHONY: all clean fclean re git push test

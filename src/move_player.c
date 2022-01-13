@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 23:11:09 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/12 21:18:10 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/13 11:08:26 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int	ft_move_player(int key, t_game *game)
 
 void	ft_move_w(t_game *game, int *i, int *j)
 {
-	void	*temp;
-
 	if (game->data.map.mtx[*j - 1][*i] == 'C')
 		game->colletable -= 1;
 	if (game->data.map.mtx[*j - 1][*i] == 'E' \
@@ -49,12 +47,8 @@ void	ft_move_w(t_game *game, int *i, int *j)
 	{
 		game->data.map.mtx[*j][*i] = '0';
 		game->data.map.mtx[*j - 1][*i] = 'P';
-		temp = game->data.map.floor_img;
 		ft_put_image(game, game->data.map.floor_img, *i, *j);
-		free(temp);
-		temp = game->data.player.img;
 		ft_put_image(game, game->data.player.img, *i, *j - 1);
-		free(temp);
 		*j -= 1;
 		game->steps++;
 	}
