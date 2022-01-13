@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:36:34 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/09 20:37:14 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/13 01:26:13 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,16 @@ void	ft_lines_cmp(t_game *game)
 	{
 		if (ft_strlen(game->data.map.mtx[i]) != len_validation)
 		{
+			while (game->data.map.rows >= 0)
+			{
+				printf("Estou aqui! %d\n", game->data.map.rows);
+				free(game->data.map.mtx[game->data.map.rows]);
+				game->data.map.rows--;
+			}
+			free(game->data.map.mtx);
+			free(game->data.map.str);
 			printf(ERROR_4);
-			exit (1);
+			exit(1);
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 17:21:29 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/09 09:36:37 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/12 22:07:30 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ void	ft_read_map(t_game *game)
 	line = get_next_line(game->data.map.fd);
 	if (!line)
 	{
-		printf(ERROR_3);
+		printf(ERROR_3, game->data.map.name);
 		exit (1);
 	}
 	game->data.map.str = ft_strdup(line);
 	ft_strmap_generator(game, &line);
+	free(line);
 }
 
 static void	ft_strmap_generator(t_game *game, char **line)

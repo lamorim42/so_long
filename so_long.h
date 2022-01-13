@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:30:37 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/11 05:45:41 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/13 01:14:30 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 # define ERROR_1 "\e[1;91m \tError 01! \e[0m Invalid number of argumeets.\n"
 # define ERROR_2 "\e[1;91m \tError 02! \e[0m Invalid map extension.\n"
-# define ERROR_3 "\e[1;91m \tError 03! \e[0m Null read, nonexistent map.\n"
+# define ERROR_3 "\e[1;91m \tError 03! \e[0m Null read, nonexistent %s map.\n"
 # define ERROR_4 "\e[1;91m \tError 04! \e[0m Invalid map composition.\
  Map is not a rectangle.\n"
 # define ERROR_5 "\e[1;91m \tError 05! \e[0m Invalid map composition.\
@@ -83,6 +83,7 @@ typedef struct s_game {
 	int			colletable;
 	t_position	door;
 	int			end_game;
+	int			steps;
 }				t_game;
 
 int		ft_destroy_window(t_game *game);
@@ -99,17 +100,20 @@ void	ft_window_size(t_game *game);
 void	*ft_img_init(char *path_img, t_game *game);
 void	ft_all_img_init(t_game *game);
 void	ft_put_image(t_game *game, void *img, int x, int y);
+void	ft_put_door(t_game *game, int i, int j, int *flag);
+void	ft_put_player(t_game *game, int i, int j, int *flag);
 void	ft_map_drow(t_game *game);
 void	ft_init_player(t_game *game, int j, int i);
 int		ft_move_player(int key, t_game *game);
-void	ft_move_w(t_game *game);
-void	ft_move_s(t_game *game);
-void	ft_move_a(t_game *game);
-void	ft_move_d(t_game *game);
+void	ft_move_w(t_game *game, int *i, int *j);
+void	ft_move_s(t_game *game, int *i, int *j);
+void	ft_move_a(t_game *game, int *i, int *j);
+void	ft_move_d(t_game *game, int *i, int *j);
+void	ft_move(t_game *game, void (*f)(t_game *game, int *i, int *j), \
+int *i, int *j);
 void	ft_collet_count(t_game *game);
-void	ft_find_door(t_game *game);
 void	ft_open_door(t_game *game);
 void	ft_game_init(t_game *game);
-//void	ft_open_door(t_game *game);
+void	ft_end_game(t_game *game);
 
 #endif

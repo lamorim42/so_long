@@ -15,6 +15,7 @@ SRC = main.c \
 	$(SRC_PATH)/map_generator.c \
 	$(SRC_PATH)/player_manager.c \
 	$(SRC_PATH)/move_player.c \
+	$(SRC_PATH)/move_player_utils.c \
 	$(SRC_PATH)/game_init.c \
 	$(SRC_PATH)/game_manager.c \
 
@@ -40,13 +41,18 @@ fclean: clean
 
 re: fclean all
 
-git:
+git: fclean
 	git status
 	git add .
 	git status
-	git commit -m "update imgs"
+	git commit -m "correcting leaks"
 
 push:
 	git push
 
-.PHONY: all clean fclean re git push
+test:
+	make re
+	clear
+	valgrind --leak-check=full --show-leak-kinds=all ./so_long maps/wrog_maps/map_i.ber
+
+.PHONY: all clean fclean re git push test

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_init.c                                        :+:      :+:    :+:   */
+/*   move_player_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 23:21:28 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/12 20:36:28 by lamorim          ###   ########.fr       */
+/*   Created: 2022/01/12 19:04:04 by lamorim           #+#    #+#             */
+/*   Updated: 2022/01/12 19:11:52 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_game_init(t_game *game)
+void	ft_move(t_game *game, void (*f)(t_game *game, int *i, int *j), \
+int *i, int *j)
 {
-	ft_collet_count(game);
-	game->steps = 0;
-	game->end_game = 0;
+	(*f)(game, i, j);
+	ft_open_door(game);
 }
