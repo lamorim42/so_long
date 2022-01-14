@@ -56,4 +56,4 @@ push:
 test:
 	valgrind --leak-check=full -s ./so_long maps/map_1.ber
 
-.PHONY: all clean fclean re git push test_errors
+.PHONY: all clean fclean re git push test

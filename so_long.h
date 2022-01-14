@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:30:37 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/13 15:48:49 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/13 23:47:03 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	ft_put_image(t_game *game, void *img, int x, int y);
 void	ft_put_door(t_game *game, int i, int j, int *flag);
 void	ft_put_player(t_game *game, int i, int j, int *flag);
 void	ft_map_drow(t_game *game);
+int		ft_map_redrow(t_game *game);
 void	ft_init_player(t_game *game, int j, int i);
 int		ft_move_player(int key, t_game *game);
 void	ft_move_w(t_game *game, int *i, int *j);

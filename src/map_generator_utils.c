@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 15:36:53 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/13 17:21:58 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/14 03:03:29 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,32 @@ void	ft_put_player(t_game *game, int i, int j, int *flag)
 		game->data.map.mtx[i][j] = '0';
 		ft_put_image(game, game->data.map.floor_img, j, i);
 	}
+}
+
+int	ft_map_redrow(t_game *game)
+{
+	int			i;
+	int			j;
+
+	i = 0;
+	while (i < game->data.map.rows + 1)
+	{
+		j = 0;
+		while (game->data.map.mtx[i][j])
+		{
+			if (game->data.map.mtx[i][j] == '1')
+				ft_put_image(game, game->data.map.wall_img, j, i);
+			else if (game->data.map.mtx[i][j] == '0')
+				ft_put_image(game, game->data.map.floor_img, j, i);
+			else if (game->data.map.mtx[i][j] == 'C')
+				ft_put_image(game, game->data.map.collet_img, j, i);
+			else if (game->data.map.mtx[i][j] == 'E')
+				ft_put_image(game, game->data.map.door_img, j, i);
+			else if (game->data.map.mtx[i][j] == 'P')
+				ft_put_image(game, game->data.player.img, j, i);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
