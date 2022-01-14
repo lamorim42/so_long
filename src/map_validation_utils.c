@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 19:59:13 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/13 15:46:51 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/14 10:51:37 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,16 @@ void	ft_map_validation(t_game *game)
 {
 	ft_valid_map_extension(game);
 	ft_read_map(game);
-	ft_mtxmap_generator(game);
 	if (!game->data.map.str)
 		exit(1);
+	if (game->data.map.str[0] != '1')
+	{
+		free(game->data.map.str);
+		close(game->data.map.fd);
+		printf(ERROR_7);
+		exit(1);
+	}
+	ft_mtxmap_generator(game);
 	ft_lines_cmp(game);
 	ft_check_map_itens(game);
 	ft_check_wrong_itens(game);

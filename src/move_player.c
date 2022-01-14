@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 23:11:09 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/13 23:10:05 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/14 10:53:49 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_move_player(int key, t_game *game)
 	else if (key == ESC)
 		ft_destroy_window(game);
 	if (!game->end_game)
-		printf("%d\n", game->steps);
+		printf("moves: %d\n", game->steps);
 	return (0);
 }
 

@@ -48,7 +48,7 @@ git: fclean
 	git status
 	git add .
 	git status
-	git commit -m "Mandatory part ok!"
+	git commit -m "Mandatory update."
 
 push:
 	git push
@@ -56,4 +56,7 @@ push:
 test:
 	valgrind --leak-check=full -s ./so_long maps/map_1.ber
 
-.PHONY: all clean fclean re git push test
+norma:
+	norminette so_long.c so_long.h src/
+
+.PHONY: all clean fclean re git push test norminette
