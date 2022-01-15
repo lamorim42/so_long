@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 09:08:47 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/14 02:40:03 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/14 17:38:53 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_put_image(t_game *game, void *img, int x, int y)
 	y * SPRITE_SIZE);
 }
 
-void	ft_map_drow(t_game *game)
+void	ft_map_draw(t_game *game)
 {
 	int			i;
 	int			j;

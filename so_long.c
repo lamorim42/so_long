@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:36:17 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/14 02:47:59 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/14 17:37:45 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ int	main(int argc, char **argv)
 	game.win = mlx_new_window(game.mlx, \
 	(game.win_width), (game.win_height), "so_long");
 	ft_all_img_init(&game);
-	ft_map_drow(&game);
+	ft_map_draw(&game);
 	ft_game_init(&game);
 	mlx_hook(game.win, 2, 1L << 0, &ft_move_player, &game);
 	mlx_hook(game.win, 17, 0L, &ft_destroy_window, &game);
-	mlx_hook(game.win, 9, 1L << 21, &ft_map_redrow, &game);
+	mlx_hook(game.win, 9, 1L << 21, &ft_map_redraw, &game);
+	mlx_loop_hook(game.mlx, &ft_map_redraw, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }

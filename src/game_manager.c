@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 00:16:31 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/13 17:19:16 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/14 20:44:33 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,9 @@ void	ft_collet_count(t_game *game)
 
 void	ft_open_door(t_game *game)
 {
-	if (game->colletable == 0)
-	{
-		mlx_destroy_image(game->mlx, game->data.map.door_img);
-		game->data.map.door_img = ft_img_init(DOOR_O, game);
-		ft_put_image(game, game->data.map.door_img, game->door.x, game->door.y);
-	}
+	mlx_destroy_image(game->mlx, game->data.map.door_img);
+	game->data.map.door_img = ft_img_init(DOOR_O, game);
+	ft_put_image(game, game->data.map.door_img, game->door.x, game->door.y);
 }
 
 void	ft_end_game(t_game *game)

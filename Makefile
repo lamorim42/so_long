@@ -3,7 +3,7 @@ SRC_PATH = src/
 LIBFT_PATH = libraries/libft/
 MLX_PATH = libraries/minilibx-linux
 
-CC = clang
+CC = gcc
 CFLAGS = -g3 -Wall -Wextra -Werror
 MLXFLAGS = -L $(MLX_PATH) -lmlx -lXext -lX11
 LIBFTFLAGS = -L $(LIBFT_PATH) -lft
@@ -19,6 +19,7 @@ SRC = so_long.c \
 	$(SRC_PATH)/move_player_utils.c \
 	$(SRC_PATH)/game_init.c \
 	$(SRC_PATH)/game_manager.c \
+	$(SRC_PATH)/close_game.c \
 
 OBJ = $(SRC:%.c=%.o)
 NAME = so_long
@@ -53,7 +54,7 @@ git: fclean
 push:
 	git push
 
-test:
+test: re
 	valgrind --leak-check=full -s ./so_long maps/map_1.ber
 
 norma:

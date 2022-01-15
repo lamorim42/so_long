@@ -22,7 +22,7 @@ OBJ_MAIN= $(MAIN:.c=.o)
 
 TEST	= test
 
-CC		= clang
+CC		= gcc
 RM		= rm -f
 CCLIB	= ar rcs
 

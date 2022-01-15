@@ -6,13 +6,15 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 17:21:29 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/12 22:07:30 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/14 20:29:42 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
 static void	ft_strmap_generator(t_game *game, char **line);
+static void	ft_check_ns(t_game *game);
+static void	ft_check_last_char(t_game *game);
 
 void	ft_read_map(t_game *game)
 {
@@ -56,6 +58,8 @@ void	ft_mtxmap_generator(t_game *game)
 
 	i = 0;
 	flag = 0;
+	ft_check_last_char(game);
+	ft_check_ns(game);
 	game->data.map.mtx = ft_split(game->data.map.str, '\n');
 	while (game->data.map.str[i] != '\n')
 		i++;
@@ -68,4 +72,45 @@ void	ft_mtxmap_generator(t_game *game)
 		i++;
 	}
 	game->data.map.rows = flag;
+}
+
+static void	ft_check_ns(t_game *game)
+{
+	int	i;
+	int	len;
+	int	flag;
+
+	i = 0;
+	flag = 0;
+	len = ft_strlen(game->data.map.str) - 1;
+	while (i < len)
+	{
+		if (game->data.map.str[i] == '\n' && game->data.map.str[i + 1] == '\n')
+			flag++;
+		i++;
+	}
+	if (flag)
+	{
+		free(game->data.map.str);
+		printf(ERROR_8);
+		exit (1);
+	}
+}
+
+static void	ft_check_last_char(t_game *game)
+{
+	int		len;
+	int		n;
+	char	*str;
+
+	n = 0;
+	len = ft_strlen(game->data.map.str) - 1;
+	if (game->data.map.str[len] == '\n')
+	{
+		while (game->data.map.str[len--] == '\n')
+			n++;
+	}
+	len += 2;
+	str = &game->data.map.str[len];
+	ft_bzero(str, (size_t) n);
 }

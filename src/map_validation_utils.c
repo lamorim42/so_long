@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 19:59:13 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/14 10:51:37 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/14 18:17:56 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	ft_map_validation(t_game *game)
 	}
 	ft_mtxmap_generator(game);
 	ft_lines_cmp(game);
-	ft_check_map_itens(game);
-	ft_check_wrong_itens(game);
+	ft_check_map_items(game);
+	ft_check_wrong_items(game);
 	ft_check_border(game);
 }
 

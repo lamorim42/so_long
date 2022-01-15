@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:30:37 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/13 23:47:03 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/14 21:14:43 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ composition. Missing mandatory item.\n"
 composition. Ivalid char on the map.\n"
 # define ERROR_7 "\e[1;91m Error\n \tiderror = 07: \e[0m Invalid map \
 composition. Ivalid char on the map border.\n"
+# define ERROR_8 "\e[1;91m Error\n \tiderror = 08: \e[0m Invalid map \
+composition. Split map\n"
 
 # define SPRITE_SIZE 64
 
@@ -97,8 +99,8 @@ int		ft_valid_map_extension(t_game *game);
 void	ft_read_map(t_game *game);
 void	ft_mtxmap_generator(t_game *game);
 void	ft_lines_cmp(t_game *game);
-void	ft_check_map_itens(t_game *game);
-void	ft_check_wrong_itens(t_game *game);
+void	ft_check_map_items(t_game *game);
+void	ft_check_wrong_items(t_game *game);
 void	ft_check_border(t_game *game);
 void	ft_window_size(t_game *game);
 void	*ft_img_init(char *path_img, t_game *game);
@@ -106,8 +108,8 @@ void	ft_all_img_init(t_game *game);
 void	ft_put_image(t_game *game, void *img, int x, int y);
 void	ft_put_door(t_game *game, int i, int j, int *flag);
 void	ft_put_player(t_game *game, int i, int j, int *flag);
-void	ft_map_drow(t_game *game);
-int		ft_map_redrow(t_game *game);
+void	ft_map_draw(t_game *game);
+int		ft_map_redraw(t_game *game);
 void	ft_init_player(t_game *game, int j, int i);
 int		ft_move_player(int key, t_game *game);
 void	ft_move_w(t_game *game, int *i, int *j);
