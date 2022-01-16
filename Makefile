@@ -79,6 +79,6 @@ test: re
 	valgrind --leak-check=full -s ./so_long maps/map_1.ber
 
 norma:
-	norminette so_long.c so_long.h src/
+	norminette so_long.c so_long.h $(SRC_PATH) $(SRC_PATH_BONUS)
 
-.PHONY: all clean fclean re git push test norminette
+.PHONY: all clean fclean re git push test norminette bonus
