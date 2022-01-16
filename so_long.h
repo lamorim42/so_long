@@ -6,7 +6,7 @@
 /*   By: lamorim <lamorim@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:30:37 by lamorim           #+#    #+#             */
-/*   Updated: 2022/01/14 21:14:43 by lamorim          ###   ########.fr       */
+/*   Updated: 2022/01/16 16:10:51 by lamorim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define S 0x73
 # define A 0x61
 # define D 0x64
+# define Q 0x71
 # define ESC 0xff1b
 
 # define ERROR_1 "\e[1;91m Error\n \tiderror = 01: \e[0m Invalid number of\
@@ -49,6 +50,10 @@ composition. Split map\n"
 # define DOOR_O "./src/images/open_door.xpm"
 # define COLLECT "./src/images/collectable.xpm"
 # define PLAYER "./src/images/player_front.xpm"
+# define PLAYER_B "./src_bonus/images/player_back_ink_64.xpm"
+# define PLAYER_L "./src_bonus/images/player_left_ink_64.xpm"
+# define PLAYER_R "./src_bonus/images/player_right_ink_64.xpm"
+# define ENEMY "./src_bonus/images/enemy_ink_64.xpm"
 
 typedef struct s_position {
 	int	x;
@@ -58,6 +63,10 @@ typedef struct s_position {
 typedef struct s_player {
 	t_position	position;
 	void		*img;
+	void		*img_b;
+	void		*img_l;
+	void		*img_r;
+	char		sprite;
 }				t_player;
 
 typedef struct s_map {
@@ -72,6 +81,7 @@ typedef struct s_map {
 	void		*wall_img;
 	void		*collet_img;
 	void		*door_img;
+	void		*enemy_img;
 }			t_map;
 
 typedef struct s_data {
@@ -88,6 +98,7 @@ typedef struct s_game {
 	int			colletable;
 	t_position	door;
 	int			end_game;
+	int			lose;
 	int			steps;
 }				t_game;
 
@@ -109,6 +120,7 @@ void	ft_put_image(t_game *game, void *img, int x, int y);
 void	ft_put_door(t_game *game, int i, int j, int *flag);
 void	ft_put_player(t_game *game, int i, int j, int *flag);
 void	ft_map_draw(t_game *game);
+void	ft_help_draw(t_game *game, int i, int j);
 int		ft_map_redraw(t_game *game);
 void	ft_init_player(t_game *game, int j, int i);
 int		ft_move_player(int key, t_game *game);
@@ -122,6 +134,8 @@ void	ft_collet_count(t_game *game);
 void	ft_open_door(t_game *game);
 void	ft_game_init(t_game *game);
 void	ft_end_game(t_game *game);
+void	ft_lose_game(t_game *game);
 void	ft_free_game(t_game *game);
+void	ft_print_steps(t_game *game);
 
 #endif

@@ -1,5 +1,6 @@
 
 SRC_PATH = src/
+SRC_PATH_BONUS = src_bonus/
 LIBFT_PATH = libraries/libft/
 MLX_PATH = libraries/minilibx-linux
 
@@ -21,7 +22,21 @@ SRC = so_long.c \
 	$(SRC_PATH)/game_manager.c \
 	$(SRC_PATH)/close_game.c \
 
+SRC_BONUS = so_long.c \
+	$(SRC_PATH_BONUS)/map_validation_bonus.c \
+	$(SRC_PATH_BONUS)/map_validation_utils_bonus.c \
+	$(SRC_PATH_BONUS)/read_map_bonus.c \
+	$(SRC_PATH_BONUS)/map_generator_bonus.c \
+	$(SRC_PATH_BONUS)/map_generator_utils_bonus.c \
+	$(SRC_PATH_BONUS)/move_player_bonus.c \
+	$(SRC_PATH_BONUS)/move_player_utils_bonus.c \
+	$(SRC_PATH_BONUS)/game_init_bonus.c \
+	$(SRC_PATH_BONUS)/game_manager_bonus.c \
+	$(SRC_PATH_BONUS)/close_game_bonus.c \
+	$(SRC_PATH_BONUS)/bonus_utils.c
+
 OBJ = $(SRC:%.c=%.o)
+OBJ_BONUS = $(SRC_BONUS:%.c=%.o)
 NAME = so_long
 
 %.o: %.c
@@ -34,8 +49,14 @@ $(NAME): $(OBJ)
 	make all -C $(MLX_PATH)
 	$(CC) $(CFLAGS) $(OBJ) $(MLXFLAGS) $(LIBFTFLAGS) -o $(NAME)
 
+bonus: $(OBJ_BONUS)
+	make all -C $(LIBFT_PATH)
+	make all -C $(MLX_PATH)
+	$(CC) $(CFLAGS) $(OBJ_BONUS) $(MLXFLAGS) $(LIBFTFLAGS) -o $(NAME)
+
 clean:
 	rm -rf $(OBJ)
+	rm -rf $(OBJ_BONUS)
 	make clean -C $(LIBFT_PATH)
 	make clean -C $(MLX_PATH)
 
@@ -49,7 +70,7 @@ git: fclean
 	git status
 	git add .
 	git status
-	git commit -m "Mandatory update."
+	git commit -m "Bonus update."
 
 push:
 	git push
